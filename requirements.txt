@@ -1,0 +1,6 @@
+# Core tool has zero third-party dependencies (stdlib only: csv, statistics,
+# collections, dataclasses, datetime, argparse). Charts are hand-rolled
+# inline SVG - no matplotlib/plotting library needed.
+#
+# Dev/test dependency:
+pytest>=7.0

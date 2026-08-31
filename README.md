@@ -9,7 +9,9 @@ Built to mirror real high-volume ticket queue work (12-15 tickets/day,
 1,000+/year across Level 2 support) — this is the reporting layer that
 turns "I resolved a lot of tickets" into a number a manager can act on.
 
-![Sample report](assets/sample-report.png)
+Run the quick start below and open `report.html` to see the full breakdown —
+SLA compliance by priority, backlog aging buckets, and a weekly volume trend,
+all rendered with inline SVG charts (no matplotlib dependency).
 
 ## What it computes
 
@@ -95,4 +97,3 @@ bucketing, day-of-week/hour breakdowns).
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
