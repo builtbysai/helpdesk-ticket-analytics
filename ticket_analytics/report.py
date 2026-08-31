@@ -9,7 +9,7 @@ from .metrics import MetricsReport
 
 def print_console_report(report):
     start, end = report.date_range
-    print(f"\nHelpdesk Ticket Analytics — {report.total_tickets} tickets, {start.date()} to {end.date()}\n")
+    print(f"\nHelpdesk Ticket Analytics - {report.total_tickets} tickets, {start.date()} to {end.date()}\n")
     print(f"  Resolved: {report.resolved_count}   Open: {report.open_count}")
     if report.avg_resolution_hours is not None:
         print(f"  Avg resolution time:    {report.avg_resolution_hours} hours")
@@ -24,7 +24,7 @@ def print_console_report(report):
     for priority, stats in report.resolution_by_priority.items():
         avg = stats["avg_hours"]
         avg_str = f"{avg}h avg" if avg is not None else "n/a"
-        print(f"    {priority:<10} {stats['count']:>4} tickets ({stats['resolved_count']} resolved) — {avg_str}")
+        print(f"    {priority:<10} {stats['count']:>4} tickets ({stats['resolved_count']} resolved) - {avg_str}")
     print("\n  Top categories:")
     for category, count in report.volume_by_category[:8]:
         print(f"    {category:<24} {count}")
@@ -68,8 +68,8 @@ def write_html_report(report, path):
     backlog_chart = bar_chart_svg(list(report.backlog_aging.items()), title="Open-ticket backlog aging")
     priority_rows = "".join(
         f"<tr><td>{p}</td><td>{s['count']}</td><td>{s['resolved_count']}</td>"
-        f"<td>{s['avg_hours'] if s['avg_hours'] is not None else '—'}</td>"
-        f"<td>{report.sla_compliance_by_priority.get(p) if report.sla_compliance_by_priority.get(p) is not None else '—'}</td></tr>"
+        f"<td>{s['avg_hours'] if s['avg_hours'] is not None else '-'}</td>"
+        f"<td>{report.sla_compliance_by_priority.get(p) if report.sla_compliance_by_priority.get(p) is not None else '-'}</td></tr>"
         for p, s in report.resolution_by_priority.items()
     )
     html = f"""<!doctype html>
@@ -98,8 +98,8 @@ def write_html_report(report, path):
   <div class="stat"><div class="value">{report.total_tickets}</div><div class="label">Total tickets</div></div>
   <div class="stat"><div class="value">{report.resolved_count}</div><div class="label">Resolved</div></div>
   <div class="stat"><div class="value">{report.open_count}</div><div class="label">Open</div></div>
-  <div class="stat"><div class="value">{report.avg_resolution_hours or '—'}h</div><div class="label">Avg resolution</div></div>
-  <div class="stat"><div class="value">{report.sla_compliance_overall_pct or '—'}%</div><div class="label">SLA compliance</div></div>
+  <div class="stat"><div class="value">{report.avg_resolution_hours or '-'}h</div><div class="label">Avg resolution</div></div>
+  <div class="stat"><div class="value">{report.sla_compliance_overall_pct or '-'}%</div><div class="label">SLA compliance</div></div>
 </div>
 <h2>Resolution time &amp; SLA by priority</h2>
 <table>
