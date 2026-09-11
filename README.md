@@ -97,3 +97,7 @@ bucketing, day-of-week/hour breakdowns).
 ## License
 
 MIT - see [LICENSE](LICENSE).
+
+---
+
+*Built by [Hans Sai](https://builtbysai.com).*
