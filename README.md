@@ -13,6 +13,13 @@ Run the quick start below and open `report.html` to see the full breakdown -
 SLA compliance by priority, backlog aging buckets, and a weekly volume trend,
 all rendered with inline SVG charts (no matplotlib dependency).
 
+<p align="center">
+  <img src="assets/terminal-demo.svg" width="860" alt="Console report from a real ticket-analytics run over the bundled sample export">
+</p>
+<p align="center">
+  <img src="assets/sla-dashboard.svg" width="860" alt="Illustrative SLA compliance dashboard built from the tool's real computations">
+</p>
+
 ## What it computes
 
 - **Volume**: total, by category, by priority, by day of week, by hour of day (useful for staffing conversations)

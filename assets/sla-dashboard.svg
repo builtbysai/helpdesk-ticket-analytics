@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+<defs><pattern id="sl2" width="4" height="4" patternUnits="userSpaceOnUse">
+<rect width="4" height="1" fill="#ffffff" opacity="0.018"/></pattern></defs>
+<rect x="1" y="1" width="958" height="598" rx="14" fill="#070b08" stroke="#1d3a26" stroke-width="2"/>
+<rect x="1" y="1" width="958" height="598" rx="14" fill="url(#sl2)"/>
+<text x="36" y="34" fill="#e8f5ec" font-size="17" font-weight="bold">SLA compliance — sample export</text>
+<text x="36" y="54" fill="#8fa89a" font-size="12">illustrative dashboard · figures from the bundled 620-ticket synthetic sample</text>
+<text x="924" y="34" text-anchor="end" fill="#33ff66" font-size="15">overall <tspan font-weight="bold" font-size="19">96.7%</tspan></text>
+
+<g>
+<rect x="36.0" y="124" width="204.0" height="210" rx="12" fill="#0a100c" stroke="#1d3a26" stroke-width="1.5"/>
+<text x="138.0" y="156" text-anchor="middle" fill="#e8f5ec" font-size="14" font-weight="bold">Critical</text>
+<text x="138.0" y="172" text-anchor="middle" fill="#8fa89a" font-size="11.5">SLA target 4h</text>
+<circle cx="138.0" cy="242" r="42" fill="none" stroke="#16241b" stroke-width="11"/>
+<circle cx="138.0" cy="242" r="42" fill="none" stroke="#33ff66" stroke-width="11" stroke-linecap="round"
+  stroke-dasharray="263.9" stroke-dashoffset="18.7" transform="rotate(-90 138.0 242)"/>
+<text x="138.0" y="249" text-anchor="middle" fill="#33ff66" font-size="20" font-weight="bold">92.9%</text>
+<text x="138.0" y="292" text-anchor="middle" fill="#8fa89a" font-size="11.5">of resolved tickets</text>
+<text x="138.0" y="308" text-anchor="middle" fill="#8fa89a" font-size="11.5">beat SLA</text>
+</g>
+<g>
+<rect x="264.0" y="124" width="204.0" height="210" rx="12" fill="#0a100c" stroke="#1d3a26" stroke-width="1.5"/>
+<text x="366.0" y="156" text-anchor="middle" fill="#e8f5ec" font-size="14" font-weight="bold">High</text>
+<text x="366.0" y="172" text-anchor="middle" fill="#8fa89a" font-size="11.5">SLA target 8h</text>
+<circle cx="366.0" cy="242" r="42" fill="none" stroke="#16241b" stroke-width="11"/>
+<circle cx="366.0" cy="242" r="42" fill="none" stroke="#ffb020" stroke-width="11" stroke-linecap="round"
+  stroke-dasharray="263.9" stroke-dashoffset="49.6" transform="rotate(-90 366.0 242)"/>
+<text x="366.0" y="249" text-anchor="middle" fill="#ffb020" font-size="20" font-weight="bold">81.2%</text>
+<text x="366.0" y="292" text-anchor="middle" fill="#8fa89a" font-size="11.5">of resolved tickets</text>
+<text x="366.0" y="308" text-anchor="middle" fill="#8fa89a" font-size="11.5">beat SLA</text>
+</g>
+<g>
+<rect x="492.0" y="124" width="204.0" height="210" rx="12" fill="#0a100c" stroke="#1d3a26" stroke-width="1.5"/>
+<text x="594.0" y="156" text-anchor="middle" fill="#e8f5ec" font-size="14" font-weight="bold">Medium</text>
+<text x="594.0" y="172" text-anchor="middle" fill="#8fa89a" font-size="11.5">SLA target 24h</text>
+<circle cx="594.0" cy="242" r="42" fill="none" stroke="#16241b" stroke-width="11"/>
+<circle cx="594.0" cy="242" r="42" fill="none" stroke="#33ff66" stroke-width="11" stroke-linecap="round"
+  stroke-dasharray="263.9" stroke-dashoffset="0.0" transform="rotate(-90 594.0 242)"/>
+<text x="594.0" y="249" text-anchor="middle" fill="#33ff66" font-size="20" font-weight="bold">100%</text>
+<text x="594.0" y="292" text-anchor="middle" fill="#8fa89a" font-size="11.5">of resolved tickets</text>
+<text x="594.0" y="308" text-anchor="middle" fill="#8fa89a" font-size="11.5">beat SLA</text>
+</g>
+<g>
+<rect x="720.0" y="124" width="204.0" height="210" rx="12" fill="#0a100c" stroke="#1d3a26" stroke-width="1.5"/>
+<text x="822.0" y="156" text-anchor="middle" fill="#e8f5ec" font-size="14" font-weight="bold">Low</text>
+<text x="822.0" y="172" text-anchor="middle" fill="#8fa89a" font-size="11.5">SLA target 72h</text>
+<circle cx="822.0" cy="242" r="42" fill="none" stroke="#16241b" stroke-width="11"/>
+<circle cx="822.0" cy="242" r="42" fill="none" stroke="#33ff66" stroke-width="11" stroke-linecap="round"
+  stroke-dasharray="263.9" stroke-dashoffset="0.0" transform="rotate(-90 822.0 242)"/>
+<text x="822.0" y="249" text-anchor="middle" fill="#33ff66" font-size="20" font-weight="bold">100%</text>
+<text x="822.0" y="292" text-anchor="middle" fill="#8fa89a" font-size="11.5">of resolved tickets</text>
+<text x="822.0" y="308" text-anchor="middle" fill="#8fa89a" font-size="11.5">beat SLA</text>
+</g>
+<text x="36" y="372" fill="#e8f5ec" font-size="14" font-weight="bold">Open-ticket backlog aging</text>
+<text x="924" y="372" text-anchor="end" fill="#8fa89a" font-size="11.5">49 open · 21 aged 7+ days</text>
+
+<rect x="98" y="462" width="98" height="40" rx="4" fill="#33ff66" opacity="0.82"/>
+<text x="147" y="458" text-anchor="middle" fill="#e8f5ec" font-size="13" font-weight="bold">8</text>
+<text x="147" y="520" text-anchor="middle" fill="#8fa89a" font-size="12">0-1d</text>
+<rect x="320" y="438" width="98" height="64" rx="4" fill="#33ff66" opacity="0.82"/>
+<text x="369" y="434" text-anchor="middle" fill="#e8f5ec" font-size="13" font-weight="bold">13</text>
+<text x="369" y="520" text-anchor="middle" fill="#8fa89a" font-size="12">1-3d</text>
+<rect x="542" y="467" width="98" height="35" rx="4" fill="#33ff66" opacity="0.82"/>
+<text x="591" y="463" text-anchor="middle" fill="#e8f5ec" font-size="13" font-weight="bold">7</text>
+<text x="591" y="520" text-anchor="middle" fill="#8fa89a" font-size="12">3-7d</text>
+<rect x="764" y="398" width="98" height="104" rx="4" fill="#ff5f56" opacity="0.82"/>
+<text x="813" y="394" text-anchor="middle" fill="#e8f5ec" font-size="13" font-weight="bold">21</text>
+<text x="813" y="520" text-anchor="middle" fill="#8fa89a" font-size="12">7+d</text>
+<line x1="36" y1="502" x2="924" y2="502" stroke="#1d3a26" stroke-width="1"/>
+<text x="36" y="586" fill="#4a5f52" font-size="11">ticket-analytics computes volume, resolution time, SLA compliance &amp; backlog aging — stdlib only</text>
+</svg>
