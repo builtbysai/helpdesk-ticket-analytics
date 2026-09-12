@@ -17,7 +17,7 @@ all rendered with inline SVG charts (no matplotlib dependency).
   <img src="assets/terminal-demo.svg" width="860" alt="Console report from a real ticket-analytics run over the bundled sample export">
 </p>
 <p align="center">
-  <img src="assets/sla-dashboard.svg" width="860" alt="Illustrative SLA compliance dashboard built from the tool's real computations">
+  <img src="assets/sla-dashboard.svg" width="860" alt="SLA compliance dashboard computed from the tool's real output on the sample export">
 </p>
 
 ## What it computes

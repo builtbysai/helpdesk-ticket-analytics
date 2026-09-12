@@ -1,14 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="641" viewBox="0 0 960 641" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
-<defs><pattern id="sl1" width="4" height="4" patternUnits="userSpaceOnUse">
-<rect width="4" height="1" fill="#ffffff" opacity="0.018"/></pattern></defs>
-<rect x="1" y="1" width="958" height="639" rx="14" fill="#070b08" stroke="#1d3a26" stroke-width="2"/>
-<rect x="1" y="1" width="958" height="639" rx="14" fill="url(#sl1)"/>
-<rect x="2" y="2" width="956" height="44" rx="12" fill="#0d1410"/>
-<line x1="8" y1="46" x2="952" y2="46" stroke="#1d3a26" stroke-width="1"/>
-<circle cx="30" cy="23" r="6" fill="#ff5f56" opacity="0.85"/>
-<circle cx="50" cy="23" r="6" fill="#ffb020" opacity="0.85"/>
-<circle cx="70" cy="23" r="6" fill="#33ff66" opacity="0.85"/>
-<text x="480" y="28" text-anchor="middle" fill="#8fa89a" font-size="12.5">ticket-analytics — console report</text>
-<text x="28" y="74" fill="#33ff66" font-size="13.5">$ python -m ticket_analytics.cli sample_data/tickets_sample.csv</text><text x="28" y="93" fill="#8fa89a" font-size="13.5"></text><text x="28" y="112" fill="#e8f5ec" font-size="13.5">Helpdesk Ticket Analytics - 620 tickets, 2026-05-01 to 2026-07-31</text><text x="28" y="131" fill="#8fa89a" font-size="13.5"></text><text x="28" y="150" fill="#8fa89a" font-size="13.5">  Resolved: 571   Open: 49</text><text x="28" y="169" fill="#8fa89a" font-size="13.5">  Avg resolution time:    3.06 hours</text><text x="28" y="188" fill="#8fa89a" font-size="13.5">  Median resolution time: 1.32 hours</text><text x="28" y="207" fill="#33ff66" font-size="13.5">  Overall SLA compliance: 96.7%</text><text x="28" y="226" fill="#8fa89a" font-size="13.5"></text><text x="28" y="245" fill="#e8f5ec" font-size="13.5">  SLA compliance by priority:</text><text x="28" y="264" fill="#33ff66" font-size="13.5">    Low        100.0%</text><text x="28" y="283" fill="#ffb020" font-size="13.5">    High       81.2%</text><text x="28" y="302" fill="#33ff66" font-size="13.5">    Medium     100.0%</text><text x="28" y="321" fill="#33ff66" font-size="13.5">    Critical   92.9%</text><text x="28" y="340" fill="#8fa89a" font-size="13.5"></text><text x="28" y="359" fill="#e8f5ec" font-size="13.5">  Resolution time by priority:</text><text x="28" y="378" fill="#8fa89a" font-size="13.5">    Low        276 tickets (252 resolved) - 0.75h avg</text><text x="28" y="397" fill="#8fa89a" font-size="13.5">    High       102 tickets ( 96 resolved) - 7.58h avg</text><text x="28" y="416" fill="#8fa89a" font-size="13.5">    Medium     224 tickets (209 resolved) - 3.78h avg</text><text x="28" y="435" fill="#8fa89a" font-size="13.5">    Critical    18 tickets ( 14 resolved) - 2.75h avg</text><text x="28" y="454" fill="#8fa89a" font-size="13.5"></text><text x="28" y="473" fill="#e8f5ec" font-size="13.5">  Backlog aging (open tickets):</text><text x="28" y="492" fill="#8fa89a" font-size="13.5">    0-1 days    8</text><text x="28" y="511" fill="#8fa89a" font-size="13.5">    1-3 days   13</text><text x="28" y="530" fill="#8fa89a" font-size="13.5">    3-7 days    7</text><text x="28" y="549" fill="#ffb020" font-size="13.5">    7+ days    21</text><text x="28" y="568" fill="#8fa89a" font-size="13.5"></text><text x="28" y="587" fill="#33ff66" font-size="13.5">$ python -m ticket_analytics.cli sample_data/tickets_sample.csv --html-out report.html</text><text x="28" y="606" fill="#8fa89a" font-size="13.5">Wrote HTML report: report.html</text>
-<rect x="285.1" y="610" width="9" height="15" fill="#33ff66" opacity="0.9"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1069" viewBox="0 0 880 1069" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" xml:space="preserve">
+<rect width="880" height="1069" fill="#f4f1ea"/>
+<rect x="12" y="12" width="856" height="1045" rx="12" fill="#ffffff" stroke="#e4ddd0"/>
+<circle cx="40" cy="38" r="6" fill="#e2725b"/>
+<circle cx="60" cy="38" r="6" fill="#eab308"/>
+<circle cx="80" cy="38" r="6" fill="#65a30d"/>
+<text x="106" y="43" fill="#8b98a1" font-size="12.5">bash — helpdesk-ticket-analytics</text>
+<line x1="24" y1="58" x2="856" y2="58" stroke="#e4ddd0"/>
+<text x="34" y="71" fill="#2f7d4f" font-weight="bold">$</text><text x="52" y="71" fill="#1e2a32">python -m ticket_analytics.cli sample_data/tickets_sample.csv</text>
+<text x="34" y="113" fill="#1e2a32" font-weight="bold">Helpdesk&#160;Ticket&#160;Analytics&#160;-&#160;620&#160;tickets,&#160;2026-05-01&#160;to&#160;2026-07-31</text>
+<text x="34" y="155" fill="#1e2a32" >&#160;&#160;Resolved:&#160;571&#160;&#160;&#160;Open:&#160;49</text>
+<text x="34" y="176" fill="#1e2a32" >&#160;&#160;Avg&#160;resolution&#160;time:&#160;&#160;&#160;&#160;3.06&#160;hours</text>
+<text x="34" y="197" fill="#1e2a32" >&#160;&#160;Median&#160;resolution&#160;time:&#160;1.32&#160;hours</text>
+<text x="34" y="218" fill="#1e2a32" >&#160;&#160;Overall&#160;SLA&#160;compliance:&#160;96.7%</text>
+<text x="34" y="260" fill="#1e2a32" font-weight="bold">&#160;&#160;SLA&#160;compliance&#160;by&#160;priority:</text>
+<text x="34" y="281" fill="#2f7d4f" >&#160;&#160;&#160;&#160;Low&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;100.0%</text>
+<text x="34" y="302" fill="#b45309" >&#160;&#160;&#160;&#160;High&#160;&#160;&#160;&#160;&#160;&#160;&#160;81.2%</text>
+<text x="34" y="323" fill="#2f7d4f" >&#160;&#160;&#160;&#160;Medium&#160;&#160;&#160;&#160;&#160;100.0%</text>
+<text x="34" y="344" fill="#2f7d4f" >&#160;&#160;&#160;&#160;Critical&#160;&#160;&#160;92.9%</text>
+<text x="34" y="386" fill="#1e2a32" font-weight="bold">&#160;&#160;Resolution&#160;time&#160;by&#160;priority:</text>
+<text x="34" y="407" fill="#1e2a32" >&#160;&#160;&#160;&#160;Low&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;276&#160;tickets&#160;(252&#160;resolved)&#160;-&#160;0.75h&#160;avg</text>
+<text x="34" y="428" fill="#1e2a32" >&#160;&#160;&#160;&#160;High&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;102&#160;tickets&#160;(96&#160;resolved)&#160;-&#160;7.58h&#160;avg</text>
+<text x="34" y="449" fill="#1e2a32" >&#160;&#160;&#160;&#160;Medium&#160;&#160;&#160;&#160;&#160;&#160;224&#160;tickets&#160;(209&#160;resolved)&#160;-&#160;3.78h&#160;avg</text>
+<text x="34" y="470" fill="#1e2a32" >&#160;&#160;&#160;&#160;Critical&#160;&#160;&#160;&#160;&#160;18&#160;tickets&#160;(14&#160;resolved)&#160;-&#160;2.75h&#160;avg</text>
+<text x="34" y="512" fill="#1e2a32" font-weight="bold">&#160;&#160;Top&#160;categories:</text>
+<text x="34" y="533" fill="#1e2a32" >&#160;&#160;&#160;&#160;Password&#160;Reset&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;119</text>
+<text x="34" y="554" fill="#1e2a32" >&#160;&#160;&#160;&#160;Printer&#160;/&#160;Print&#160;Queue&#160;&#160;&#160;&#160;88</text>
+<text x="34" y="575" fill="#1e2a32" >&#160;&#160;&#160;&#160;Active&#160;Directory&#160;Access&#160;&#160;73</text>
+<text x="34" y="596" fill="#1e2a32" >&#160;&#160;&#160;&#160;Account&#160;Unlock&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;69</text>
+<text x="34" y="617" fill="#1e2a32" >&#160;&#160;&#160;&#160;Network&#160;Connectivity&#160;&#160;&#160;&#160;&#160;67</text>
+<text x="34" y="638" fill="#1e2a32" >&#160;&#160;&#160;&#160;Software&#160;Install/Update&#160;&#160;67</text>
+<text x="34" y="659" fill="#1e2a32" >&#160;&#160;&#160;&#160;System&#160;Crash&#160;/&#160;BSOD&#160;&#160;&#160;&#160;&#160;&#160;58</text>
+<text x="34" y="680" fill="#1e2a32" >&#160;&#160;&#160;&#160;Hardware&#160;Failure&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;44</text>
+<text x="34" y="722" fill="#1e2a32" font-weight="bold">&#160;&#160;Backlog&#160;aging&#160;(open&#160;tickets):</text>
+<text x="34" y="743" fill="#1e2a32" >&#160;&#160;&#160;&#160;0-1&#160;days&#160;&#160;&#160;8</text>
+<text x="34" y="764" fill="#1e2a32" >&#160;&#160;&#160;&#160;1-3&#160;days&#160;&#160;&#160;13</text>
+<text x="34" y="785" fill="#1e2a32" >&#160;&#160;&#160;&#160;3-7&#160;days&#160;&#160;&#160;7</text>
+<text x="34" y="806" fill="#b45309" >&#160;&#160;&#160;&#160;7+&#160;days&#160;&#160;&#160;&#160;21</text>
+<text x="34" y="848" fill="#1e2a32" font-weight="bold">&#160;&#160;Volume&#160;by&#160;day&#160;of&#160;week:</text>
+<text x="34" y="869" fill="#1e2a32" >&#160;&#160;&#160;&#160;Monday&#160;&#160;&#160;&#160;&#160;115</text>
+<text x="34" y="890" fill="#1e2a32" >&#160;&#160;&#160;&#160;Tuesday&#160;&#160;&#160;&#160;118</text>
+<text x="34" y="911" fill="#1e2a32" >&#160;&#160;&#160;&#160;Wednesday&#160;&#160;123</text>
+<text x="34" y="932" fill="#1e2a32" >&#160;&#160;&#160;&#160;Thursday&#160;&#160;&#160;119</text>
+<text x="34" y="953" fill="#1e2a32" >&#160;&#160;&#160;&#160;Friday&#160;&#160;&#160;&#160;&#160;122</text>
+<text x="34" y="974" fill="#1e2a32" >&#160;&#160;&#160;&#160;Saturday&#160;&#160;&#160;7</text>
+<text x="34" y="995" fill="#1e2a32" >&#160;&#160;&#160;&#160;Sunday&#160;&#160;&#160;&#160;&#160;16</text>
+<text x="34" y="1037" fill="#2f7d4f" font-weight="bold">$</text><text x="52" y="1037" fill="#8b98a1">▍</text>
 </svg>
