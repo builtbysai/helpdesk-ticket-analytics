@@ -11,7 +11,10 @@ turns "I resolved a lot of tickets" into a number a manager can act on.
 
 Run the quick start below and open `report.html` to see the full breakdown -
 SLA compliance by priority, backlog aging buckets, and a weekly volume trend,
-all rendered with inline SVG charts (no matplotlib dependency).
+all rendered with inline SVG charts (no matplotlib dependency). The HTML
+report is styled as a printed **Helpdesk Operations Review**: warm paper,
+serif headlines, thin-rule charts, an executive summary up top, and
+print-friendly CSS.
 
 <p align="center">
   <img src="assets/terminal-demo.svg" width="860" alt="Console report from a real ticket-analytics run over the bundled sample export">
