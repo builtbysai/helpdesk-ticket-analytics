@@ -1,6 +1,6 @@
 [project]
 name = "helpdesk-ticket-analytics"
-version = "0.1.0"
+version = "0.2.0"
 description = "Turns a helpdesk ticket export (CSV) into SLA, resolution-time, and volume metrics, with an HTML report."
 requires-python = ">=3.10"
 readme = "README.md"

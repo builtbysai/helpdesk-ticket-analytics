@@ -113,6 +113,17 @@ tbody tr:hover { background: var(--panel-2); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .rank { font-weight: 800; color: var(--faint); width: 34px; font-variant-numeric: tabular-nums; }
 
+/* period-over-period deltas */
+.delta {
+  display: inline-block; font-size: 12.5px; font-weight: 700;
+  padding: 3px 10px; border: 1px solid var(--rule);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.delta.good { color: var(--green); border-color: rgba(63, 185, 80, 0.45); background: rgba(63, 185, 80, 0.08); }
+.delta.bad { color: var(--red); border-color: rgba(248, 81, 73, 0.45); background: rgba(248, 81, 73, 0.08); }
+.delta.neutral { color: var(--muted); }
+.cmp-note { font-size: 13px; color: var(--muted); margin: 0 0 18px; max-width: 680px; }
+
 /* footer */
 footer { border-top: 4px solid var(--rule); padding-top: 18px; margin-top: 20px; }
 footer p { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; max-width: 700px; }
@@ -139,7 +150,9 @@ footer strong { color: var(--ink); }
   footer { border-top-color: #111; }
   section, .figure, .callout { break-inside: avoid; }
   .stats { grid-template-columns: repeat(4, 1fr); }
-}</style>
+}
+@media print {
+  .delta.good, .delta.bad { color: #111; border-color: #999; background: #fff; }</style>
 </head>
 <body>
 
@@ -190,6 +203,27 @@ footer strong { color: var(--ink); }
         <p class="sub">81.2% compliance on High priority</p>
       </div>
     </div>
+  </section>
+  
+  <section>
+    <p class="sec-label">Trend</p>
+    <h2>Versus the previous period</h2>
+    <hr class="sec-rule">
+    <p class="cmp-note">Compared with February 1 to April 30, 2026. 6 metrics improved, 1 moved the wrong way. Green means better, red means worse, gray is context.</p>
+    <table>
+      <caption>Current period vs previous period, with change and direction.</caption>
+      <tr><th>Metric</th><th class="num">Previous</th><th class="num">Current</th><th>Change</th></tr>
+      <tr><td>SLA compliance (overall)</td><td class="num">94.3%</td><td class="num">96.7%</td><td><span class="delta good">▲ +2.4 pts</span></td></tr>
+<tr><td>Median resolution</td><td class="num">1.36h</td><td class="num">1.32h</td><td><span class="delta good">▼ -0.04 h</span></td></tr>
+<tr><td>Average resolution</td><td class="num">3.68h</td><td class="num">3.06h</td><td><span class="delta good">▼ -0.62 h</span></td></tr>
+<tr><td>Open backlog</td><td class="num">43</td><td class="num">49</td><td><span class="delta bad">▲ +6</span></td></tr>
+<tr><td>SLA breaches</td><td class="num">31</td><td class="num">19</td><td><span class="delta good">▼ -12</span></td></tr>
+<tr><td>Ticket volume</td><td class="num">585</td><td class="num">620</td><td><span class="delta neutral">▲ +35</span></td></tr>
+<tr><td>SLA compliance (Critical)</td><td class="num">75%</td><td class="num">92.9%</td><td><span class="delta good">▲ +17.9 pts</span></td></tr>
+<tr><td>SLA compliance (High)</td><td class="num">64.5%</td><td class="num">81.2%</td><td><span class="delta good">▲ +16.7 pts</span></td></tr>
+<tr><td>SLA compliance (Medium)</td><td class="num">100%</td><td class="num">100%</td><td><span class="delta neutral"> no change</span></td></tr>
+<tr><td>SLA compliance (Low)</td><td class="num">100%</td><td class="num">100%</td><td><span class="delta neutral"> no change</span></td></tr>
+    </table>
   </section>
 
   <section>

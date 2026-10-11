@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import csv
+import os
+import shutil
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
 
 from . import charts
 from .charts import hbars, hour_strip, weekly_trend, sla_band
+from .compare import PeriodComparison, compare_reports, format_change, format_value
 from .metrics import MetricsReport
 from .models import DEFAULT_SLA_HOURS
 
@@ -120,6 +124,17 @@ tbody tr:hover { background: var(--panel-2); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .rank { font-weight: 800; color: var(--faint); width: 34px; font-variant-numeric: tabular-nums; }
 
+/* period-over-period deltas */
+.delta {
+  display: inline-block; font-size: 12.5px; font-weight: 700;
+  padding: 3px 10px; border: 1px solid var(--rule);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.delta.good { color: var(--green); border-color: rgba(63, 185, 80, 0.45); background: rgba(63, 185, 80, 0.08); }
+.delta.bad { color: var(--red); border-color: rgba(248, 81, 73, 0.45); background: rgba(248, 81, 73, 0.08); }
+.delta.neutral { color: var(--muted); }
+.cmp-note { font-size: 13px; color: var(--muted); margin: 0 0 18px; max-width: 680px; }
+
 /* footer */
 footer { border-top: 4px solid var(--rule); padding-top: 18px; margin-top: 20px; }
 footer p { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; max-width: 700px; }
@@ -146,10 +161,12 @@ footer strong { color: var(--ink); }
   footer { border-top-color: #111; }
   section, .figure, .callout { break-inside: avoid; }
   .stats { grid-template-columns: repeat(4, 1fr); }
-}"""
+}
+@media print {
+  .delta.good, .delta.bad { color: #111; border-color: #999; background: #fff; }"""
 
 
-def print_console_report(report):
+def print_console_report(report, previous=None):
     start, end = report.date_range
     print(f"\nHelpdesk Ticket Analytics - {report.total_tickets} tickets, {start.date()} to {end.date()}\n")
     print(f"  Resolved: {report.resolved_count}   Open: {report.open_count}")
@@ -176,7 +193,20 @@ def print_console_report(report):
     print("\n  Volume by day of week:")
     for day, count in report.volume_by_day_of_week.items():
         print(f"    {day:<10} {count}")
+    if previous is not None:
+        _print_console_comparison(report, previous)
     print()
+
+
+def _print_console_comparison(report, previous):
+    cmp = compare_reports(report, previous)
+    pstart, pend = cmp.previous_range
+    print(f"\n  Period comparison vs {pstart.date()} to {pend.date()}:")
+    for d in cmp.deltas:
+        cur = format_value(d, "current")
+        prev = format_value(d, "previous")
+        chg = format_change(d)
+        print(f"    {d.label:<26} {cur:>10} vs {prev:<10} ({chg})")
 
 
 def write_summary_csv(report, path):
@@ -243,11 +273,46 @@ def _ordered_priorities(report):
     return present
 
 
-def write_html_report(report, path):
+def _delta_arrow(direction):
+    return {"up": "\u25b2", "down": "\u25bc"}.get(direction, "")
+
+
+def _comparison_section(report, previous):
+    cmp = compare_reports(report, previous)
+    pstart, pend = cmp.previous_range
+    rows = []
+    for d in cmp.deltas:
+        arrow = _delta_arrow(d.direction)
+        badge = f'<span class="delta {d.sentiment}">{arrow} {format_change(d)}</span>'
+        rows.append(
+            f"<tr><td>{d.label}</td>"
+            f'<td class="num">{format_value(d, "previous")}</td>'
+            f'<td class="num">{format_value(d, "current")}</td>'
+            f"<td>{badge}</td></tr>")
+    rows_html = "\n".join(rows)
+    good = sum(1 for d in cmp.deltas if d.sentiment == "good")
+    bad = sum(1 for d in cmp.deltas if d.sentiment == "bad")
+    return f"""
+  <section>
+    <p class="sec-label">Trend</p>
+    <h2>Versus the previous period</h2>
+    <hr class="sec-rule">
+    <p class="cmp-note">Compared with {pstart:%B} {pstart.day} to {pend:%B} {pend.day}, {pend.year}. {good} metric{'s' if good != 1 else ''} improved, {bad} moved the wrong way. Green means better, red means worse, gray is context.</p>
+    <table>
+      <caption>Current period vs previous period, with change and direction.</caption>
+      <tr><th>Metric</th><th class="num">Previous</th><th class="num">Current</th><th>Change</th></tr>
+      {rows_html}
+    </table>
+  </section>"""
+
+
+def write_html_report(report, path, previous=None):
     path = Path(path)
     start, end = report.date_range
     date_title = f"{start:%B} {start.day} to {end:%B} {end.day}, {end.year}"
     generated = datetime.now().strftime("%B %d, %Y")
+
+    cmp_section = _comparison_section(report, previous) if previous is not None else ""
 
     priorities = _ordered_priorities(report)
     sla_items = [(p, report.sla_compliance_by_priority.get(p)) for p in priorities]
@@ -392,6 +457,7 @@ def write_html_report(report, path):
       </div>
     </div>
   </section>
+  {cmp_section}
 
   <section>
     <p class="sec-label">Performance</p>
@@ -503,3 +569,52 @@ def write_html_report(report, path):
 </html>
 """
     path.write_text(html, encoding="utf-8")
+
+
+# ---------- PDF export ----------
+
+def find_chromium():
+    """Locate a Chromium/Chrome binary for headless PDF export.
+
+    Checks the CHROMIUM_BIN environment variable first, then the usual
+    binary names on PATH. Returns the path or None.
+    """
+    env_bin = os.environ.get("CHROMIUM_BIN")
+    if env_bin and Path(env_bin).exists():
+        return env_bin
+    for name in ("chromium", "chromium-browser", "google-chrome", "google-chrome-stable"):
+        found = shutil.which(name)
+        if found:
+            return found
+    return None
+
+
+class PdfExportError(RuntimeError):
+    pass
+
+
+def export_pdf(html_path, pdf_path):
+    """Render the HTML report to PDF via headless Chromium's print-to-pdf.
+
+    Uses the report's own @media print stylesheet, so the PDF comes out as
+    the light, print-optimized version. No extra dependencies: needs a
+    Chromium or Chrome binary on PATH (or CHROMIUM_BIN set).
+    """
+    chromium = find_chromium()
+    if chromium is None:
+        raise PdfExportError(
+            "PDF export needs a Chromium or Chrome binary on PATH "
+            "(or set CHROMIUM_BIN to its path). "
+            "The HTML report itself is print-ready: open it in any browser "
+            "and choose Print > Save as PDF.")
+    html_path = Path(html_path).resolve()
+    pdf_path = Path(pdf_path)
+    result = subprocess.run(
+        [chromium, "--headless", "--no-sandbox", "--disable-gpu",
+         "--no-pdf-header-footer", f"--print-to-pdf={pdf_path.resolve()}",
+         html_path.as_uri()],
+        capture_output=True, text=True, timeout=120)
+    if result.returncode != 0 or not pdf_path.exists():
+        raise PdfExportError(
+            f"Chromium failed to produce the PDF (exit {result.returncode}): "
+            f"{result.stderr.strip()[:300]}")
