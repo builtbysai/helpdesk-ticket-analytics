@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helpdesk Operations Review - May 1 to July 31, 2026</title>
+<style>:root {
+  --bg: #0b0e13;
+  --panel: #12181f;
+  --panel-2: #161e28;
+  --ink: #e8eef4;
+  --muted: #8b98a5;
+  --faint: #5c6a77;
+  --rule: #232c36;
+  --green: #3fb950;
+  --amber: #d29922;
+  --red: #f85149;
+  --accent: #6cb6ff;
+  --sans: system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', 'DejaVu Sans', Arial, sans-serif;
+  --mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.wrap { max-width: 920px; margin: 0 auto; padding: 56px 32px 80px; }
+
+/* masthead */
+.masthead { border-top: 4px solid var(--accent); padding-top: 18px; margin-bottom: 44px; }
+.masthead .row { display: flex; align-items: center; gap: 16px; }
+.mark { flex: 0 0 auto; }
+.eyebrow {
+  font-size: 11.5px; letter-spacing: 0.22em; color: var(--muted);
+  text-transform: uppercase; margin: 0 0 10px;
+}
+h1 {
+  font-weight: 800; font-size: 40px;
+  line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.02em;
+}
+.dek { font-size: 16.5px; color: var(--muted); margin: 0; max-width: 640px; }
+.masthead .rule { border: 0; border-top: 1px solid var(--rule); margin: 22px 0 0; }
+
+/* sections */
+section { margin: 0 0 56px; }
+.sec-label {
+  font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--faint); margin: 0 0 6px;
+}
+h2 {
+  font-size: 26px; font-weight: 800;
+  margin: 0 0 10px; letter-spacing: -0.02em;
+}
+.lede { font-size: 16px; color: #b6c2cd; max-width: 680px; margin: 0 0 22px; }
+.sec-rule { border: 0; border-top: 2px solid var(--accent); width: 56px; margin: 0 0 26px; }
+
+/* stat cards */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0 8px; }
+.stat {
+  background: var(--panel); border: 1px solid var(--rule);
+  padding: 18px 18px 16px;
+}
+.stat .num {
+  font-size: 38px; font-weight: 800;
+  line-height: 1; margin: 0 0 8px; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.stat .num small { font-size: 20px; font-weight: 400; color: var(--muted); }
+.stat .cap { font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.stat .sub { font-size: 13px; color: var(--muted); margin: 0; }
+.num.good { color: var(--green); }
+.num.bad { color: var(--red); }
+.num.warn { color: var(--amber); }
+
+/* tables */
+table { border-collapse: collapse; width: 100%; background: var(--panel); }
+caption { text-align: left; font-size: 12.5px; color: var(--muted); padding: 0 0 8px; caption-side: top; }
+th, td { padding: 9px 14px; font-size: 14px; border-bottom: 1px solid var(--rule); }
+th {
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; text-align: left;
+  border-bottom: 2px solid #3a4654;
+}
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--panel-2); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: baseline; }
+
+/* chart frames */
+.figure { background: var(--panel); border: 1px solid var(--rule); padding: 22px 22px 14px; margin: 0 0 26px; }
+.figure figcaption { font-size: 13px; color: var(--muted); margin: 6px 0 4px; }
+.figure h3 { font-size: 18px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+.chart { width: 100%; height: auto; display: block; }
+.nodata { color: var(--muted); font-style: italic; }
+
+/* legend + callouts */
+.legend { display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin: 2px 0 0; }
+.legend .sw { display: inline-block; width: 12px; height: 12px; margin-right: 7px; vertical-align: -1px; }
+.callout {
+  border-left: 3px solid var(--amber); background: var(--panel-2);
+  padding: 16px 20px; margin: 0 0 26px; font-size: 15px;
+}
+.callout strong { font-weight: 700; }
+.callout.red { border-left-color: var(--red); background: rgba(248, 81, 73, 0.07); }
+.callout.green { border-left-color: var(--green); background: rgba(63, 185, 80, 0.07); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.rank { font-weight: 800; color: var(--faint); width: 34px; font-variant-numeric: tabular-nums; }
+
+/* footer */
+footer { border-top: 4px solid var(--rule); padding-top: 18px; margin-top: 20px; }
+footer p { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; max-width: 700px; }
+footer strong { color: var(--ink); }
+.meta { font-family: var(--mono); font-size: 12px; }
+
+@media (max-width: 720px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  h1 { font-size: 32px; }
+  .wrap { padding: 36px 18px 60px; }
+}
+@media print {
+  body { background: #fff; color: #111; }
+  .wrap { max-width: none; padding: 0; }
+  .stat, .figure, table, .callout { background: #fff; border-color: #ddd; }
+  th, td { border-color: #ddd; }
+  tbody tr:hover { background: #fff; }
+  h1, h2, .figure h3, footer strong { color: #111; }
+  .lede, .dek, .stat .cap, .stat .sub, caption, .figure figcaption, footer p { color: #444; }
+  .chart { filter: invert(1) hue-rotate(180deg); }
+  .masthead { border-top-color: #111; }
+  .sec-rule { border-top-color: #111; }
+  footer { border-top-color: #111; }
+  section, .figure, .callout { break-inside: avoid; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+}</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="row">
+      <svg class="mark" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4" y="8" width="36" height="28" rx="3" fill="none" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="26" y1="8" x2="26" y2="36" stroke="#e8eef4" stroke-width="2" stroke-dasharray="4 3"/>
+        <line x1="11" y1="16" x2="21" y2="16" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="11" y1="22" x2="21" y2="22" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="11" y1="28" x2="18" y2="28" stroke="#e8eef4" stroke-width="2.5"/>
+      </svg>
+      <div>
+        <p class="eyebrow">Helpdesk Operations Review</p>
+        <h1>Ticket Report, May 1 to July 31, 2026</h1>
+      </div>
+    </div>
+    <p class="dek">620 tickets opened or carried through the period. Prepared for the weekly ops review: what we met, where it hurt, and what needs staffing.</p>
+    <hr class="rule">
+  </header>
+
+  <section>
+    <p class="sec-label">The short version</p>
+    <h2>We are meeting SLA, except where it matters most.</h2>
+    <hr class="sec-rule">
+    <p class="lede">Of 620 tickets, 571 were resolved and 96.7% beat their SLA target. High priority work is the weak spot at 81.2% compliance, and 21 open tickets have been waiting more than a week.</p>
+    <div class="stats">
+      <div class="stat">
+        <p class="num good">96.7<small>%</small></p>
+        <p class="cap">SLA compliance</p>
+        <p class="sub">Across all resolved tickets</p>
+      </div>
+      <div class="stat">
+        <p class="num">1.32<small>h</small></p>
+        <p class="cap">Median resolution</p>
+        <p class="sub">Average 3.06h across resolved tickets</p>
+      </div>
+      <div class="stat">
+        <p class="num warn">49</p>
+        <p class="cap">Open tickets</p>
+        <p class="sub">21 older than a week</p>
+      </div>
+      <div class="stat">
+        <p class="num bad">18</p>
+        <p class="cap">High priority breaches</p>
+        <p class="sub">81.2% compliance on High priority</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label">Performance</p>
+    <h2>SLA, priority by priority</h2>
+    <hr class="sec-rule">
+    <p class="lede">Low and Medium tickets never missed. Critical slipped once, to 92.9%. High is the problem: 18 of 96 resolved High tickets breached the 8h target.</p>
+    <figure class="figure">
+      <h3>SLA compliance by priority</h3>
+      <svg viewBox="0 0 680 160" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="200.0" y1="16" x2="200.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="200.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0</text>
+<line x1="304.0" y1="16" x2="304.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="304.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>25</text>
+<line x1="408.0" y1="16" x2="408.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="408.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>50</text>
+<line x1="512.0" y1="16" x2="512.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="512.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>75</text>
+<line x1="616.0" y1="16" x2="616.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="616.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>100</text>
+<text x="188" y="39.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Critical</text>
+<rect x="200" y="26" width="386.5" height="18" fill="#d29922"/>
+<text x="596.5" y="39.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>92.9%</text>
+<text x="188" y="71.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>High</text>
+<rect x="200" y="58" width="337.8" height="18" fill="#f85149"/>
+<text x="547.8" y="71.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>81.2%</text>
+<text x="188" y="103.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Medium</text>
+<rect x="200" y="90" width="416.0" height="18" fill="#3fb950"/>
+<text x="626.0" y="103.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>100%</text>
+<text x="188" y="135.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Low</text>
+<rect x="200" y="122" width="416.0" height="18" fill="#3fb950"/>
+<text x="626.0" y="135.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>100%</text>
+</svg>
+      <figcaption>Share of resolved tickets closed inside the SLA target for their priority.</figcaption>
+    </figure>
+    <div class="legend" style="margin-bottom: 18px;">
+      <span><span class="sw" style="background:#3fb950"></span>95% or better</span>
+      <span><span class="sw" style="background:#d29922"></span>85 to 94%</span>
+      <span><span class="sw" style="background:#f85149"></span>below 85%</span>
+    </div>
+    <table>
+      <caption>Resolved, met, and breached counts per priority.</caption>
+      <tr><th>Priority</th><th class="num">SLA target</th><th class="num">Resolved</th><th class="num">Met</th><th class="num">Breached</th><th class="num">Compliance</th></tr>
+      <tr><td><span class="dot" style="background:#d29922"></span>Critical</td><td class="num">4h</td><td class="num">14</td><td class="num">13</td><td class="num">1</td><td class="num"><strong>92.9%</strong></td></tr>
+<tr><td><span class="dot" style="background:#f85149"></span>High</td><td class="num">8h</td><td class="num">96</td><td class="num">78</td><td class="num">18</td><td class="num"><strong>81.2%</strong></td></tr>
+<tr><td><span class="dot" style="background:#3fb950"></span>Medium</td><td class="num">24h</td><td class="num">209</td><td class="num">209</td><td class="num">0</td><td class="num"><strong>100%</strong></td></tr>
+<tr><td><span class="dot" style="background:#3fb950"></span>Low</td><td class="num">72h</td><td class="num">252</td><td class="num">252</td><td class="num">0</td><td class="num"><strong>100%</strong></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-label">Speed</p>
+    <h2>How long tickets take</h2>
+    <hr class="sec-rule">
+    <p class="lede">Median resolution across the queue is 1.32 hours. High priority tickets average 7.58 hours, which is where the breaches come from.</p>
+    <figure class="figure">
+      <h3>Average resolution time by priority</h3>
+      <svg viewBox="0 0 680 160" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="200.0" y1="16" x2="200.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="200.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0</text>
+<line x1="309.8" y1="16" x2="309.8" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="309.8" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>2</text>
+<line x1="419.5" y1="16" x2="419.5" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="419.5" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>4</text>
+<line x1="529.3" y1="16" x2="529.3" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="529.3" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>6</text>
+<line x1="639.1" y1="16" x2="639.1" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="639.1" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>8</text>
+<text x="188" y="39.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Critical</text>
+<rect x="200" y="26" width="150.9" height="18" fill="#3a4654"/>
+<text x="360.9" y="39.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>2.75h</text>
+<text x="188" y="71.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>High</text>
+<rect x="200" y="58" width="416.0" height="18" fill="#3a4654"/>
+<text x="626.0" y="71.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>7.58h</text>
+<text x="188" y="103.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Medium</text>
+<rect x="200" y="90" width="207.5" height="18" fill="#3a4654"/>
+<text x="417.5" y="103.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>3.78h</text>
+<text x="188" y="135.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Low</text>
+<rect x="200" y="122" width="41.2" height="18" fill="#3a4654"/>
+<text x="251.2" y="135.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0.75h</text>
+</svg>
+      <figcaption>Average hours from creation to resolution, resolved tickets only.</figcaption>
+    </figure>
+    <table>
+      <caption>Ticket counts and resolution times by priority.</caption>
+      <tr><th>Priority</th><th class="num">Tickets</th><th class="num">Resolved</th><th class="num">Avg hours</th><th class="num">Median hours</th></tr>
+      <tr><td>Critical</td><td class="num">18</td><td class="num">14</td><td class="num">2.75h</td><td class="num">1.59h</td></tr>
+<tr><td>High</td><td class="num">102</td><td class="num">96</td><td class="num">7.58h</td><td class="num">4.49h</td></tr>
+<tr><td>Medium</td><td class="num">224</td><td class="num">209</td><td class="num">3.78h</td><td class="num">2.1h</td></tr>
+<tr><td>Low</td><td class="num">276</td><td class="num">252</td><td class="num">0.75h</td><td class="num">0.36h</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-label">Demand</p>
+    <h2>Where the volume comes from</h2>
+    <hr class="sec-rule">
+    <p class="lede">The busiest week started Jul 20, with 60 tickets. Password Reset leads every category with 119 tickets, close to one in five of everything that came in.</p>
+    <figure class="figure">
+      <h3>Tickets per week</h3>
+      <svg viewBox="0 0 680 260" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="44" y1="178.8" x2="664" y2="178.8" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="182.8" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>15</text>
+<line x1="44" y1="131.6" x2="664" y2="131.6" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="135.6" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>30</text>
+<line x1="44" y1="84.3" x2="664" y2="84.3" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="88.3" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>45</text>
+<line x1="44" y1="37.1" x2="664" y2="37.1" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="41.1" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>60</text>
+<path d="M44.0,106.4 L100.4,71.7 L156.7,81.2 L213.1,87.5 L269.5,100.1 L325.8,71.7 L382.2,78.0 L438.5,78.0 L494.9,59.1 L551.3,90.6 L607.6,90.6 L664.0,37.1 L664.0,226.0 L44.0,226.0 Z" fill="#6cb6ff" opacity="0.14"/>
+<path d="M44.0,106.4 L100.4,71.7 L156.7,81.2 L213.1,87.5 L269.5,100.1 L325.8,71.7 L382.2,78.0 L438.5,78.0 L494.9,59.1 L551.3,90.6 L607.6,90.6 L664.0,37.1" fill="none" stroke="#6cb6ff" stroke-width="2.5"/>
+<circle cx="44.0" cy="106.4" r="3.5" fill="#6cb6ff"><title>38 tickets</title></circle>
+<circle cx="100.4" cy="71.7" r="3.5" fill="#6cb6ff"><title>49 tickets</title></circle>
+<circle cx="156.7" cy="81.2" r="3.5" fill="#6cb6ff"><title>46 tickets</title></circle>
+<circle cx="213.1" cy="87.5" r="3.5" fill="#6cb6ff"><title>44 tickets</title></circle>
+<circle cx="269.5" cy="100.1" r="3.5" fill="#6cb6ff"><title>40 tickets</title></circle>
+<circle cx="325.8" cy="71.7" r="3.5" fill="#6cb6ff"><title>49 tickets</title></circle>
+<circle cx="382.2" cy="78.0" r="3.5" fill="#6cb6ff"><title>47 tickets</title></circle>
+<circle cx="438.5" cy="78.0" r="3.5" fill="#6cb6ff"><title>47 tickets</title></circle>
+<circle cx="494.9" cy="59.1" r="3.5" fill="#6cb6ff"><title>53 tickets</title></circle>
+<circle cx="551.3" cy="90.6" r="3.5" fill="#6cb6ff"><title>43 tickets</title></circle>
+<circle cx="607.6" cy="90.6" r="3.5" fill="#6cb6ff"><title>43 tickets</title></circle>
+<circle cx="664.0" cy="37.1" r="3.5" fill="#6cb6ff"><title>60 tickets</title></circle>
+<text x="44.0" y="250" text-anchor="start" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>May 04</text>
+<text x="156.7" y="250" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>May 18</text>
+<text x="269.5" y="250" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Jun 01</text>
+<text x="382.2" y="250" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Jun 15</text>
+<text x="494.9" y="250" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Jun 29</text>
+<text x="607.6" y="250" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Jul 13</text>
+<text x="664.0" y="250" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Jul 20</text>
+</svg>
+      <figcaption>Tickets created per ISO week across the period. Partial weeks at the edges are excluded.</figcaption>
+    </figure>
+    <div class="grid-2">
+      <div>
+        <table>
+          <caption>Top categories by ticket count.</caption>
+          <tr><th></th><th>Category</th><th class="num">Tickets</th><th class="num">Share</th></tr>
+          <tr><td class="rank">1</td><td>Password Reset</td><td class="num">119</td><td class="num">19.2%</td></tr>
+<tr><td class="rank">2</td><td>Printer / Print Queue</td><td class="num">88</td><td class="num">14.2%</td></tr>
+<tr><td class="rank">3</td><td>Active Directory Access</td><td class="num">73</td><td class="num">11.8%</td></tr>
+<tr><td class="rank">4</td><td>Account Unlock</td><td class="num">69</td><td class="num">11.1%</td></tr>
+<tr><td class="rank">5</td><td>Network Connectivity</td><td class="num">67</td><td class="num">10.8%</td></tr>
+<tr><td class="rank">6</td><td>Software Install/Update</td><td class="num">67</td><td class="num">10.8%</td></tr>
+<tr><td class="rank">7</td><td>System Crash / BSOD</td><td class="num">58</td><td class="num">9.4%</td></tr>
+<tr><td class="rank">8</td><td>Hardware Failure</td><td class="num">44</td><td class="num">7.1%</td></tr>
+        </table>
+      </div>
+      <figure class="figure" style="margin:0;">
+        <h3>Tickets by day of week</h3>
+        <svg viewBox="0 0 680 256" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="64.0" y1="16" x2="64.0" y2="252" stroke="#232c36" stroke-width="1"/>
+<text x="64.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0</text>
+<line x1="333.3" y1="16" x2="333.3" y2="252" stroke="#232c36" stroke-width="1"/>
+<text x="333.3" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>60</text>
+<line x1="602.5" y1="16" x2="602.5" y2="252" stroke="#232c36" stroke-width="1"/>
+<text x="602.5" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>120</text>
+<text x="52" y="39.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Mon</text>
+<rect x="64" y="26" width="516.1" height="18" fill="#3a4654"/>
+<text x="52" y="71.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Tue</text>
+<rect x="64" y="58" width="529.6" height="18" fill="#3a4654"/>
+<text x="52" y="103.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Wed</text>
+<rect x="64" y="90" width="552.0" height="18" fill="#3a4654"/>
+<text x="52" y="135.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Thu</text>
+<rect x="64" y="122" width="534.0" height="18" fill="#3a4654"/>
+<text x="52" y="167.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Fri</text>
+<rect x="64" y="154" width="547.5" height="18" fill="#3a4654"/>
+<text x="52" y="199.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Sat</text>
+<rect x="64" y="186" width="31.4" height="18" fill="#3a4654"/>
+<text x="52" y="231.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>Sun</text>
+<rect x="64" y="218" width="71.8" height="18" fill="#3a4654"/>
+</svg>
+        <figcaption>Weekday load is even; weekends are near zero.</figcaption>
+      </figure>
+    </div>
+    <div class="callout green" style="margin-top: 18px;">
+      <strong>Staffing read.</strong> Wednesday was the busiest day with 123 tickets, and almost nothing lands on weekends. Volume peaks at 1 pm, which is where coverage has to be.
+    </div>
+    <figure class="figure">
+      <h3>Tickets by hour of day</h3>
+      <svg viewBox="0 0 680 200" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="44" y1="170.0" x2="668" y2="170.0" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="174.0" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0</text>
+<line x1="44" y1="94.9" x2="668" y2="94.9" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="98.9" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>44</text>
+<line x1="44" y1="18.0" x2="668" y2="18.0" stroke="#232c36" stroke-width="1"/>
+<text x="34" y="22.0" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>89</text>
+<rect x="46.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>0:00, 0 tickets</title></rect>
+<rect x="72.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>1:00, 0 tickets</title></rect>
+<rect x="98.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>2:00, 0 tickets</title></rect>
+<rect x="124.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>3:00, 0 tickets</title></rect>
+<rect x="150.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>4:00, 0 tickets</title></rect>
+<rect x="176.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>5:00, 0 tickets</title></rect>
+<rect x="202.5" y="161.5" width="21.0" height="8.5" fill="#3a4654" opacity="0.6"><title>6:00, 5 tickets</title></rect>
+<rect x="228.5" y="144.4" width="21.0" height="25.6" fill="#3a4654" opacity="0.6"><title>7:00, 15 tickets</title></rect>
+<rect x="254.5" y="118.8" width="21.0" height="51.2" fill="#3a4654" opacity="0.6"><title>8:00, 30 tickets</title></rect>
+<rect x="280.5" y="101.7" width="21.0" height="68.3" fill="#3a4654" opacity="0.6"><title>9:00, 40 tickets</title></rect>
+<rect x="306.5" y="103.4" width="21.0" height="66.6" fill="#3a4654" opacity="0.6"><title>10:00, 39 tickets</title></rect>
+<rect x="332.5" y="67.5" width="21.0" height="102.5" fill="#3a4654" opacity="0.6"><title>11:00, 60 tickets</title></rect>
+<rect x="358.5" y="47.0" width="21.0" height="123.0" fill="#3a4654" opacity="0.6"><title>12:00, 72 tickets</title></rect>
+<rect x="384.5" y="18.0" width="21.0" height="152.0" fill="#6cb6ff" opacity="1"><title>13:00, 89 tickets</title></rect>
+<rect x="410.5" y="48.7" width="21.0" height="121.3" fill="#3a4654" opacity="0.6"><title>14:00, 71 tickets</title></rect>
+<rect x="436.5" y="84.6" width="21.0" height="85.4" fill="#3a4654" opacity="0.6"><title>15:00, 50 tickets</title></rect>
+<rect x="462.5" y="94.9" width="21.0" height="75.1" fill="#3a4654" opacity="0.6"><title>16:00, 44 tickets</title></rect>
+<rect x="488.5" y="110.2" width="21.0" height="59.8" fill="#3a4654" opacity="0.6"><title>17:00, 35 tickets</title></rect>
+<rect x="514.5" y="115.3" width="21.0" height="54.7" fill="#3a4654" opacity="0.6"><title>18:00, 32 tickets</title></rect>
+<rect x="540.5" y="134.1" width="21.0" height="35.9" fill="#3a4654" opacity="0.6"><title>19:00, 21 tickets</title></rect>
+<rect x="566.5" y="149.5" width="21.0" height="20.5" fill="#3a4654" opacity="0.6"><title>20:00, 12 tickets</title></rect>
+<rect x="592.5" y="161.5" width="21.0" height="8.5" fill="#3a4654" opacity="0.6"><title>21:00, 5 tickets</title></rect>
+<rect x="618.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>22:00, 0 tickets</title></rect>
+<rect x="644.5" y="170.0" width="21.0" height="0.0" fill="#3a4654" opacity="0.6"><title>23:00, 0 tickets</title></rect>
+<text x="57.0" y="190" text-anchor="start" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>12a</text>
+<text x="213.0" y="190" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>6a</text>
+<text x="369.0" y="190" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>12p</text>
+<text x="525.0" y="190" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>6p</text>
+<text x="655.0" y="190" text-anchor="end" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>11p</text>
+<text x="395.0" y="10.0" text-anchor="middle" font-size="11" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>89 at 1 pm</text>
+</svg>
+      <figcaption>When tickets arrive, in the local timezone of the export. The highlighted bar marks the peak hour.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="sec-label">Backlog</p>
+    <h2>What is still open</h2>
+    <hr class="sec-rule">
+    <p class="lede">49 tickets are open. The 21 that are older than a week deserve a triage pass: they are the ones the director will ask about.</p>
+    <figure class="figure">
+      <h3>Open tickets by age</h3>
+      <svg viewBox="0 0 680 160" class="chart" role="img" xmlns="http://www.w3.org/2000/svg">
+<line x1="200.0" y1="16" x2="200.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="200.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0</text>
+<line x1="338.7" y1="16" x2="338.7" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="338.7" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>7</text>
+<line x1="477.3" y1="16" x2="477.3" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="477.3" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>14</text>
+<line x1="616.0" y1="16" x2="616.0" y2="156" stroke="#232c36" stroke-width="1"/>
+<text x="616.0" y="10" text-anchor="middle" font-size="10.5" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>21</text>
+<text x="188" y="39.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>0-1 days</text>
+<rect x="200" y="26" width="158.5" height="18" fill="#3a4654"/>
+<text x="368.5" y="39.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>8</text>
+<text x="188" y="71.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>1-3 days</text>
+<rect x="200" y="58" width="257.5" height="18" fill="#4d5b6e"/>
+<text x="467.5" y="71.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>13</text>
+<text x="188" y="103.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>3-7 days</text>
+<rect x="200" y="90" width="138.7" height="18" fill="#d29922"/>
+<text x="348.7" y="103.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>7</text>
+<text x="188" y="135.0" text-anchor="end" font-size="13" fill="#8b98a5" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>7+ days</text>
+<rect x="200" y="122" width="416.0" height="18" fill="#f85149"/>
+<text x="626.0" y="135.0" font-size="12.5" font-weight="700" fill="#e8eef4" font-family=system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif>21</text>
+</svg>
+      <figcaption>Age of every open ticket, measured from creation to the end of the period.</figcaption>
+    </figure>
+    <div class="callout red">
+      <strong>Watch item.</strong> 21 tickets have been open longer than a week. Assign an owner and a date to each before the next review.
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Methodology.</strong> SLA targets: Critical 4h, High 8h, Medium 24h, Low 72h. Compliance is measured on resolved tickets only; a ticket meets SLA when its resolution time is within the target for its priority. Backlog age is measured to the end of the period.</p>
+    <p>Report generated October 11, 2026 from the ticket export. Charts are inline SVG; this file works offline.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
