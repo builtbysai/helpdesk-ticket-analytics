@@ -1,9 +1,16 @@
 # Helpdesk Ticket Analytics
 
-Turns a raw helpdesk ticket export (CSV) into the metrics a helpdesk lead
-actually answers for: SLA compliance, resolution time, volume trends, and
-backlog aging. Output is a dark ops-console HTML report with inline-SVG
-charts, plus console and CSV output. Zero required dependencies.
+**[Live demo: sample report](https://builtbysai.com/helpdesk-ticket-analytics/)**
+
+Turns a raw helpdesk ticket export (CSV) into the answers a helpdesk lead actually asks for: SLA compliance, resolution time, volume trends, and backlog aging. One command in, a report out. Built by an IT specialist for teams that live in their ticket queue.
+
+## Skills demonstrated
+
+- **Python.** Stdlib-only metrics engine and CLI. Zero required dependencies.
+- **Data analysis.** SLA compliance, medians that resist outlier skew, backlog-aging buckets, period-over-period deltas with good/bad sentiment.
+- **Data visualization.** Hand-rolled inline SVG charts. No matplotlib, no CDN, no chart junk.
+- **CLI design.** A loader that tolerates messy real-world exports (mixed date formats, encodings, priority aliases) and fails loudly with a line number instead of silently dropping rows.
+- **Testing.** 31 pytest tests covering the loader, the metrics engine, and the comparison math.
 
 <p align="center">
   <img src="assets/report-preview.png" width="860" alt="Sample report: headline SLA stats, median resolution, open backlog, and the period-over-period comparison table with delta badges">
