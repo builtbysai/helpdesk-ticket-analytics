@@ -11,25 +11,26 @@ from .models import DEFAULT_SLA_HOURS
 
 PRIORITY_ORDER = ["Critical", "High", "Medium", "Low"]
 
-CSS = """
-:root {
-  --paper: #f7f3e9;
-  --card: #fffdf7;
-  --ink: #241e14;
-  --muted: #7c7261;
-  --faint: #a89d84;
-  --rule: #ddd2b6;
-  --green: #2a7a44;
-  --amber: #b07508;
-  --red: #b23427;
-  --serif: 'Noto Serif', Georgia, 'Liberation Serif', serif;
-  --sans: 'Liberation Sans', 'DejaVu Sans', Arial, sans-serif;
+CSS = """:root {
+  --bg: #0b0e13;
+  --panel: #12181f;
+  --panel-2: #161e28;
+  --ink: #e8eef4;
+  --muted: #8b98a5;
+  --faint: #5c6a77;
+  --rule: #232c36;
+  --green: #3fb950;
+  --amber: #d29922;
+  --red: #f85149;
+  --accent: #6cb6ff;
+  --sans: system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', 'DejaVu Sans', Arial, sans-serif;
+  --mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
 body {
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--paper);
+  background: var(--bg);
   margin: 0;
   font-size: 15.5px;
   line-height: 1.55;
@@ -39,7 +40,7 @@ body {
 .wrap { max-width: 920px; margin: 0 auto; padding: 56px 32px 80px; }
 
 /* masthead */
-.masthead { border-top: 4px solid var(--ink); padding-top: 18px; margin-bottom: 44px; }
+.masthead { border-top: 4px solid var(--accent); padding-top: 18px; margin-bottom: 44px; }
 .masthead .row { display: flex; align-items: center; gap: 16px; }
 .mark { flex: 0 0 auto; }
 .eyebrow {
@@ -47,8 +48,8 @@ body {
   text-transform: uppercase; margin: 0 0 10px;
 }
 h1 {
-  font-family: var(--serif); font-weight: 700; font-size: 40px;
-  line-height: 1.12; margin: 0 0 10px; letter-spacing: -0.01em;
+  font-weight: 800; font-size: 40px;
+  line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.02em;
 }
 .dek { font-size: 16.5px; color: var(--muted); margin: 0; max-width: 640px; }
 .masthead .rule { border: 0; border-top: 1px solid var(--rule); margin: 22px 0 0; }
@@ -60,21 +61,22 @@ section { margin: 0 0 56px; }
   color: var(--faint); margin: 0 0 6px;
 }
 h2 {
-  font-family: var(--serif); font-size: 26px; font-weight: 700;
-  margin: 0 0 10px; letter-spacing: -0.01em;
+  font-size: 26px; font-weight: 800;
+  margin: 0 0 10px; letter-spacing: -0.02em;
 }
-.lede { font-size: 16px; color: #4c4436; max-width: 680px; margin: 0 0 22px; }
-.sec-rule { border: 0; border-top: 2px solid var(--ink); width: 56px; margin: 0 0 26px; }
+.lede { font-size: 16px; color: #b6c2cd; max-width: 680px; margin: 0 0 22px; }
+.sec-rule { border: 0; border-top: 2px solid var(--accent); width: 56px; margin: 0 0 26px; }
 
 /* stat cards */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0 8px; }
 .stat {
-  background: var(--card); border: 1px solid var(--rule);
+  background: var(--panel); border: 1px solid var(--rule);
   padding: 18px 18px 16px;
 }
 .stat .num {
-  font-family: var(--serif); font-size: 38px; font-weight: 700;
-  line-height: 1; margin: 0 0 8px; letter-spacing: -0.01em;
+  font-size: 38px; font-weight: 800;
+  line-height: 1; margin: 0 0 8px; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 .stat .num small { font-size: 20px; font-weight: 400; color: var(--muted); }
 .stat .cap { font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
@@ -84,23 +86,23 @@ h2 {
 .num.warn { color: var(--amber); }
 
 /* tables */
-table { border-collapse: collapse; width: 100%; background: var(--card); }
+table { border-collapse: collapse; width: 100%; background: var(--panel); }
 caption { text-align: left; font-size: 12.5px; color: var(--muted); padding: 0 0 8px; caption-side: top; }
 th, td { padding: 9px 14px; font-size: 14px; border-bottom: 1px solid var(--rule); }
 th {
   font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--muted); font-weight: 700; text-align: left;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid #3a4654;
 }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr:last-child td { border-bottom: 0; }
-tbody tr:hover { background: #faf6ec; }
+tbody tr:hover { background: var(--panel-2); }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: baseline; }
 
 /* chart frames */
-.figure { background: var(--card); border: 1px solid var(--rule); padding: 22px 22px 14px; margin: 0 0 26px; }
+.figure { background: var(--panel); border: 1px solid var(--rule); padding: 22px 22px 14px; margin: 0 0 26px; }
 .figure figcaption { font-size: 13px; color: var(--muted); margin: 6px 0 4px; }
-.figure h3 { font-family: var(--serif); font-size: 18px; margin: 0 0 12px; }
+.figure h3 { font-size: 18px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
 .chart { width: 100%; height: auto; display: block; }
 .nodata { color: var(--muted); font-style: italic; }
 
@@ -108,19 +110,21 @@ tbody tr:hover { background: #faf6ec; }
 .legend { display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin: 2px 0 0; }
 .legend .sw { display: inline-block; width: 12px; height: 12px; margin-right: 7px; vertical-align: -1px; }
 .callout {
-  border-left: 3px solid var(--amber); background: var(--card);
+  border-left: 3px solid var(--amber); background: var(--panel-2);
   padding: 16px 20px; margin: 0 0 26px; font-size: 15px;
 }
 .callout strong { font-weight: 700; }
-.callout.red { border-left-color: var(--red); }
-.callout.green { border-left-color: var(--green); }
+.callout.red { border-left-color: var(--red); background: rgba(248, 81, 73, 0.07); }
+.callout.green { border-left-color: var(--green); background: rgba(63, 185, 80, 0.07); }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
-.rank { font-family: var(--serif); font-weight: 700; color: var(--faint); width: 34px; }
+.rank { font-weight: 800; color: var(--faint); width: 34px; font-variant-numeric: tabular-nums; }
 
 /* footer */
-footer { border-top: 4px solid var(--ink); padding-top: 18px; margin-top: 20px; }
+footer { border-top: 4px solid var(--rule); padding-top: 18px; margin-top: 20px; }
 footer p { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; max-width: 700px; }
+footer strong { color: var(--ink); }
+.meta { font-family: var(--mono); font-size: 12px; }
 
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr 1fr; }
@@ -129,12 +133,20 @@ footer p { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; max-width: 7
   .wrap { padding: 36px 18px 60px; }
 }
 @media print {
-  body { background: #fff; }
+  body { background: #fff; color: #111; }
   .wrap { max-width: none; padding: 0; }
+  .stat, .figure, table, .callout { background: #fff; border-color: #ddd; }
+  th, td { border-color: #ddd; }
+  tbody tr:hover { background: #fff; }
+  h1, h2, .figure h3, footer strong { color: #111; }
+  .lede, .dek, .stat .cap, .stat .sub, caption, .figure figcaption, footer p { color: #444; }
+  .chart { filter: invert(1) hue-rotate(180deg); }
+  .masthead { border-top-color: #111; }
+  .sec-rule { border-top-color: #111; }
+  footer { border-top-color: #111; }
   section, .figure, .callout { break-inside: avoid; }
   .stats { grid-template-columns: repeat(4, 1fr); }
-}
-"""
+}"""
 
 
 def print_console_report(report):
@@ -310,7 +322,7 @@ def write_html_report(report, path):
                             peak_label=f"{report.volume_by_hour.get(peak_hour, 0):g} at {_hour_name(peak_hour)}")
 
     aging_items = list(report.backlog_aging.items())
-    aging_colors = ["#8a7d63", "#7a6c52", charts.AMBER, charts.RED]
+    aging_colors = ["#3a4654", "#4d5b6e", charts.AMBER, charts.RED]
     aging_chart = hbars(aging_items, colors=aging_colors, value_bold=True,
                         ticks=[0, aging_items[-1][1] // 3, 2 * aging_items[-1][1] // 3, aging_items[-1][1]])
     old7 = report.backlog_aging.get("7+ days", 0)
@@ -337,11 +349,11 @@ def write_html_report(report, path):
   <header class="masthead">
     <div class="row">
       <svg class="mark" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="4" y="8" width="36" height="28" rx="3" fill="none" stroke="#241e14" stroke-width="2.5"/>
-        <line x1="26" y1="8" x2="26" y2="36" stroke="#241e14" stroke-width="2" stroke-dasharray="4 3"/>
-        <line x1="11" y1="16" x2="21" y2="16" stroke="#241e14" stroke-width="2.5"/>
-        <line x1="11" y1="22" x2="21" y2="22" stroke="#241e14" stroke-width="2.5"/>
-        <line x1="11" y1="28" x2="18" y2="28" stroke="#241e14" stroke-width="2.5"/>
+        <rect x="4" y="8" width="36" height="28" rx="3" fill="none" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="26" y1="8" x2="26" y2="36" stroke="#e8eef4" stroke-width="2" stroke-dasharray="4 3"/>
+        <line x1="11" y1="16" x2="21" y2="16" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="11" y1="22" x2="21" y2="22" stroke="#e8eef4" stroke-width="2.5"/>
+        <line x1="11" y1="28" x2="18" y2="28" stroke="#e8eef4" stroke-width="2.5"/>
       </svg>
       <div>
         <p class="eyebrow">Helpdesk Operations Review</p>
@@ -450,7 +462,7 @@ def write_html_report(report, path):
     <figure class="figure">
       <h3>Tickets by hour of day</h3>
       {hour_chart}
-      <figcaption>When tickets arrive, in the local timezone of the export. The dark bar marks the peak hour.</figcaption>
+      <figcaption>When tickets arrive, in the local timezone of the export. The highlighted bar marks the peak hour.</figcaption>
     </figure>
   </section>
 

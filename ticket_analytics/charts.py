@@ -1,20 +1,21 @@
-"""Hand-rolled inline-SVG charts styled for the printed operations review.
+"""Hand-rolled inline-SVG charts styled for the dark ops console.
 
-Thin rules, ink-on-paper type, data colors reserved for meaning.
-No third-party libraries, no CDN assets.
+Bright data ink on near-black panels, gridlines recede, data colors
+carry meaning. No third-party libraries, no CDN assets.
 """
 
 from __future__ import annotations
 
-INK = "#241e14"
-MUTED = "#7c7261"
-RULE = "#ded4ba"
-GREEN = "#2a7a44"
-AMBER = "#b07508"
-RED = "#b23427"
-NEUTRAL = "#4a4136"
+INK = "#e8eef4"
+MUTED = "#8b98a5"
+RULE = "#232c36"
+GREEN = "#3fb950"
+AMBER = "#d29922"
+RED = "#f85149"
+NEUTRAL = "#3a4654"
+ACCENT = "#6cb6ff"
 
-SANS = "'Liberation Sans','DejaVu Sans',Arial,sans-serif"
+SANS = "system-ui,-apple-system,'Segoe UI','Liberation Sans','DejaVu Sans',Arial,sans-serif"
 
 
 def _esc(s):
@@ -52,7 +53,7 @@ def hbars(items, *, colors=None, suffix="", ticks=None, width=680, label_w=200,
         bar_len = max((value / max_value) * plot_w, 2) if value else 0
         parts.append(
             f'<text x="{label_w - 12}" y="{y + bar_h * 0.72:.1f}" text-anchor="end" '
-            f'font-size="{label_size}" fill="{INK}" font-family={SANS}>{_esc(_truncate(label, 26))}</text>')
+            f'font-size="{label_size}" fill="{MUTED}" font-family={SANS}>{_esc(_truncate(label, 26))}</text>')
         if bar_len:
             parts.append(
                 f'<rect x="{label_w}" y="{y}" width="{bar_len:.1f}" height="{bar_h}" '
@@ -67,7 +68,7 @@ def hbars(items, *, colors=None, suffix="", ticks=None, width=680, label_w=200,
 
 
 def weekly_trend(weeks, counts, *, width=680, height=260):
-    """Thin line + washed area over weekly ticket counts."""
+    """Bright line + luminous area over weekly ticket counts."""
     if not weeks:
         return '<p class="nodata">No data</p>'
     n = len(weeks)
@@ -87,10 +88,10 @@ def weekly_trend(weeks, counts, *, width=680, height=260):
         parts.append(f'<line x1="{ml}" y1="{y:.1f}" x2="{width - mr}" y2="{y:.1f}" stroke="{RULE}" stroke-width="1"/>')
         parts.append(f'<text x="{ml - 10}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{MUTED}" font-family={SANS}>{t:g}</text>')
     line = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in zip(xs, ys))
-    parts.append(f'<path d="{line} L{xs[-1]:.1f},{mt + ph:.1f} L{xs[0]:.1f},{mt + ph:.1f} Z" fill="{INK}" opacity="0.07"/>')
-    parts.append(f'<path d="{line}" fill="none" stroke="{INK}" stroke-width="2"/>')
+    parts.append(f'<path d="{line} L{xs[-1]:.1f},{mt + ph:.1f} L{xs[0]:.1f},{mt + ph:.1f} Z" fill="{ACCENT}" opacity="0.14"/>')
+    parts.append(f'<path d="{line}" fill="none" stroke="{ACCENT}" stroke-width="2.5"/>')
     for x, y, c in zip(xs, ys, counts):
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{INK}"><title>{c:g} tickets</title></circle>')
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="{ACCENT}"><title>{c:g} tickets</title></circle>')
     every = max(1, -(-n // 7))
     for i, w in enumerate(weeks):
         if i % every == 0 or i == n - 1:
@@ -119,8 +120,8 @@ def hour_strip(hours, *, width=680, height=200, peak_label=None):
     for h, c in enumerate(counts):
         bh = (c / vmax) * ph
         x = ml + h * slot + (slot - bw) / 2
-        fill = INK if h == peak else NEUTRAL
-        opacity = "1" if h == peak else "0.55"
+        fill = ACCENT if h == peak else NEUTRAL
+        opacity = "1" if h == peak else "0.6"
         parts.append(
             f'<rect x="{x:.1f}" y="{mt + ph - bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" '
             f'fill="{fill}" opacity="{opacity}"><title>{h}:00, {c:g} tickets</title></rect>')
@@ -136,7 +137,7 @@ def hour_strip(hours, *, width=680, height=200, peak_label=None):
 
 def sla_band(pct):
     if pct is None:
-        return "#9a917e"
+        return "#5c6a77"
     if pct >= 95:
         return GREEN
     if pct >= 85:
